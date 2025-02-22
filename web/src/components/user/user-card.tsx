@@ -3,7 +3,9 @@ import { BaseUserCard } from "@/components/user/base-card";
 import { StatsCard } from "@/components/user/stats-card";
 import { UserData, UserStars } from "@/lib/fetchUserDetails";
 import Image from "next/image";
-//import { ForkStatsCard } from "@/components/user/suspense-fork";
+import { Suspense } from "react";
+import { ForkStatsCard } from "@/components/user/suspense-fork";
+import { StatsSkeleton } from "../ui/skeletons";
 
 export const UserCard = async ({ user, userStars }: { user: UserData , userStars: UserStars }) => {
     return (
@@ -28,9 +30,9 @@ export const UserCard = async ({ user, userStars }: { user: UserData , userStars
                         }</p>
                         <StatsCard icon={"book"} label="Repositories" value={user.publicRepos} />
                         <StatsCard icon={"users"} label="Followers" value={user.followers} />
-                        {/*<Suspense fallback={<div>Loading forks...</div>}>
-                            <ForkStatsCard query={query} />
-                        </Suspense> */}
+                        <Suspense fallback={<StatsSkeleton animate />}>
+                            <ForkStatsCard query={user.username} />
+                        </Suspense> 
                         <StatsCard icon={"star"} label="Stars" value={userStars.totalStars} />
                     </div>
                 </div>

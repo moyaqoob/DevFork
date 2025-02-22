@@ -28,7 +28,10 @@ export default {
           "100%": { "border-radius": "45% 55% 29% 71% / 64% 31% 69% 36%" },
         },
         "spin-blob": {
-          "100%": { "transform": "rotate(1turn)" },
+          "100%": { transform: "rotate(1turn)" },
+        },
+        shimmer: {
+          "100%": { transform: "translateX(100%)" },
         },
       },
       colors: {

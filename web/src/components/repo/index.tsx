@@ -3,7 +3,7 @@ import { NO_OF_REPOS } from "@/constant";
 import { RepoList } from "@/components/repo/repo-list";
 
 export const Repo = async ({ query }: { query: string }) => {
-    await new Promise(r => setTimeout(r, 2000));
+    await new Promise(r => setTimeout(r, 3000));
     const repos = await fetchUserRepos(query);
 
     return (

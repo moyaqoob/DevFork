@@ -4,6 +4,7 @@ import Icon from "@/components/icon";
 import { ThemeChange } from "@/components/ui/theme-change";
 import { Repo } from "@/components/repo";
 import { Suspense } from "react";
+import { RepoSkeleton, UserCardSkeleton } from "@/components/ui/skeletons";
 
 
 export default async function Page({
@@ -23,12 +24,12 @@ export default async function Page({
                 <ThemeChange />
             </Form>
             {q && (
-                <Suspense fallback={<div>Loading...</div>}>
+                <Suspense key={q + "user"} fallback={<UserCardSkeleton />}>
                     <User query={q} />
                 </Suspense>
             )}
             {q && (
-                <Suspense fallback={<div>Loading repo...</div>}>
+                <Suspense key={q + "repo"} fallback={<RepoSkeleton />}>
                     <Repo query={q} />
                 </Suspense>
             )}

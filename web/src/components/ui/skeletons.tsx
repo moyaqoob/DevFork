@@ -47,11 +47,11 @@ const RepoCardSkeleton = () => {
     )
 }
 
-const RepoListSkeleton = () => {
+const RepoListSkeleton = ({length = NO_OF_REPOS}: { length?: number }) => {
     return (
         <div className="space-y-6">
             <div className="h-[30px] w-60 rounded-md bg-neutral-800/50" />
-            {Array.from({ length: NO_OF_REPOS }).map((_, i) => (
+            {Array.from({ length }).map((_, i) => (
                 <RepoCardSkeleton key={i} />
             ))}
         </div>
@@ -64,5 +64,28 @@ export const RepoSkeleton = () => {
             <RepoListSkeleton />
             <RepoListSkeleton />
         </div>
+    )
+}
+
+const SmallCardSkeleton = () => {
+    return (
+        <div className={cn(
+            shimmer,
+            "relative overflow-hidden rounded-md shadow my-6 grid grid-cols-[auto_1fr] gap-x-6",
+            "*:bg-neutral-800/50 *:rounded-md",
+        )} >
+            <div className="w-16 h-16 row-start-1 row-end-3" />
+            <div className="h-8 w-20 col-start-2 row-start-1" />
+            <div className="h-5 w-1/2 mt-1 col-start-2 row-start-2" />
+        </div>
+    )
+}
+
+export const RepoLoadingSkeleton = () => {
+    return (
+        <>
+            <SmallCardSkeleton />
+            <RepoListSkeleton length={7}/>
+        </>
     )
 }

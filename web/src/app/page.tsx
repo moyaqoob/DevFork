@@ -1,10 +1,10 @@
-import { User } from "@/components/user";
 import Form from 'next/form';
 import Icon from "@/components/icon";
 import { ThemeChange } from "@/components/ui/theme-change";
 import { Repo } from "@/components/repo";
 import { Suspense } from "react";
 import { RepoSkeleton, UserCardSkeleton } from "@/components/ui/skeletons";
+import { UserCard } from '@/components/user/user-card';
 
 
 export default async function Page({
@@ -25,7 +25,7 @@ export default async function Page({
             </Form>
             {q && (
                 <Suspense key={q + "user"} fallback={<UserCardSkeleton />}>
-                    <User query={q} />
+                    <UserCard query={q} />
                 </Suspense>
             )}
             {q && (

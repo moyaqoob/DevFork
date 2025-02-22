@@ -1,13 +1,17 @@
 import { CardContent } from "@/components/ui/card";
 import { BaseUserCard } from "@/components/user/base-card";
 import { StatsCard } from "@/components/user/stats-card";
-import { UserData, UserStars } from "@/lib/fetchUserDetails";
+import { fetchUserData, fetchUserStarCount } from "@/lib/fetchUserDetails";
 import Image from "next/image";
 import { Suspense } from "react";
 import { ForkStatsCard } from "@/components/user/suspense-fork";
 import { StatsSkeleton } from "../ui/skeletons";
 
-export const UserCard = async ({ user, userStars }: { user: UserData , userStars: UserStars }) => {
+export const UserCard = async ({ query }: { query: string }) => {
+    const [user, userStars] = await Promise.all([
+        fetchUserData(query),
+        fetchUserStarCount(query),
+    ]);
     return (
         <BaseUserCard>
             <CardContent className="p-0 grid grid-rows-[20px_8rem_1fr]">
@@ -32,7 +36,7 @@ export const UserCard = async ({ user, userStars }: { user: UserData , userStars
                         <StatsCard icon={"users"} label="Followers" value={user.followers} />
                         <Suspense fallback={<StatsSkeleton animate />}>
                             <ForkStatsCard query={user.username} />
-                        </Suspense> 
+                        </Suspense>
                         <StatsCard icon={"star"} label="Stars" value={userStars.totalStars} />
                     </div>
                 </div>

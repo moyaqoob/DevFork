@@ -1,16 +1,11 @@
-import { fetchUserData, fetchUserStarCount } from "@/lib/fetchUserDetails";
 import { CardContent } from "@/components/ui/card";
 import { BaseUserCard } from "@/components/user/base-card";
 import { StatsCard } from "@/components/user/stats-card";
+import { UserData, UserStars } from "@/lib/fetchUserDetails";
 import Image from "next/image";
-import { ForkStatsCard } from "@/components/user/suspense-fork";
-import { Suspense } from "react";
+//import { ForkStatsCard } from "@/components/user/suspense-fork";
 
-export const UserCard = async ({ query }: { query: string }) => {
-
-    const user = await fetchUserData(query);
-    const userStars = await fetchUserStarCount(query);
-
+export const UserCard = async ({ user, userStars }: { user: UserData , userStars: UserStars }) => {
     return (
         <BaseUserCard>
             <CardContent className="p-0 grid grid-rows-[20px_8rem_1fr]">
@@ -33,9 +28,9 @@ export const UserCard = async ({ query }: { query: string }) => {
                         }</p>
                         <StatsCard icon={"book"} label="Repositories" value={user.publicRepos} />
                         <StatsCard icon={"users"} label="Followers" value={user.followers} />
-                        <Suspense fallback={<div>Loading forks...</div>}>
+                        {/*<Suspense fallback={<div>Loading forks...</div>}>
                             <ForkStatsCard query={query} />
-                        </Suspense>
+                        </Suspense> */}
                         <StatsCard icon={"star"} label="Stars" value={userStars.totalStars} />
                     </div>
                 </div>

@@ -3,6 +3,7 @@ import Form from 'next/form';
 import Icon from "@/components/icon";
 import { ThemeChange } from "@/components/ui/theme-change";
 import { Repo } from "@/components/repo";
+import { Suspense } from "react";
 
 
 export default async function Page({
@@ -21,8 +22,16 @@ export default async function Page({
                 </div>
                 <ThemeChange />
             </Form>
-            {q && <User query={q} />}
-            {q && <Repo query={q} />}
+            {q && (
+                <Suspense fallback={<div>Loading...</div>}>
+                    <User query={q} />
+                </Suspense>
+            )}
+            {q && (
+                <Suspense fallback={<div>Loading repo...</div>}>
+                    <Repo query={q} />
+                </Suspense>
+            )}
         </>
     );
 }

@@ -1,14 +1,11 @@
-import { fetchUserData,  fetchUserStarCount } from "@/lib/fetchUserDetails";
 import { CardContent } from "@/components/ui/card";
 import Image from "next/image";
 import { BaseUserCard } from "@/components/user/base-card";
 import { StatsCard } from "@/components/user/stats-card";
-import { Suspense } from "react";
-import { ForkStatsCard } from "@/components/user/suspense-fork";
+import { UserData, UserStars } from "@/lib/fetchUserDetails";
+//import { ForkStatsCard } from "@/components/user/suspense-fork";
 
-export const SmallUserCard = async ({ query }: { query: string }) => {
-    const user = await fetchUserData(query);
-    const userStars = await fetchUserStarCount(query);
+export const SmallUserCard = async ({ user, userStars }: { user: UserData, userStars: UserStars }) => {
 
     return (
         <BaseUserCard>
@@ -27,9 +24,9 @@ export const SmallUserCard = async ({ query }: { query: string }) => {
                     <div className="flex flex-wrap gap-x-4">
                         <StatsCard label="Repositories" value={user.publicRepos} small />
                         <StatsCard label="Followers" value={user.followers} small />
-                        <Suspense fallback={<div>Loading forks...</div>}>
+                        {/*<Suspense fallback={<div>Loading forks...</div>}>
                             <ForkStatsCard query={query} />
-                        </Suspense>
+                        </Suspense>*/}
                         <StatsCard label="Stars" value={userStars.totalStars} small />
                     </div>
                 </div>

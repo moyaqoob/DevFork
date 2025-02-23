@@ -124,37 +124,3 @@ export const fetchUserRepos = async (username: string): Promise<UserRepos> => {
     );
   return allRepos;
 };
-
-export const fetchUserDetails = async (
-  username: string,
-): Promise<UserDetails> => {
-  const initialData = {
-    username: "",
-    avatarUrl: "",
-    name: "",
-    bio: "",
-    followers: 0,
-    publicRepos: 0,
-    totalStars: 0,
-    forkedRepos: [],
-    notForkedRepos: [],
-  };
-  try {
-    const [userData, userStars, userRepos] = await Promise.all([
-      fetchUserData(username),
-      fetchUserStarCount(username),
-      fetchUserRepos(username),
-    ]);
-    if (!userData || !userStars || !userRepos)
-      throw new Error("Failed to fetch user data");
-
-    return {
-      ...userData,
-      ...userStars,
-      ...userRepos,
-    };
-  } catch (error) {
-    console.error("Error fetching user details", { cause: error });
-    return initialData;
-  }
-};

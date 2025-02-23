@@ -1,6 +1,6 @@
 import { fetchUserData, fetchUserRepos, fetchUserStarCount } from "@/lib/fetchUserDetails";
 import { parseParams, parseSearchParams } from "@/lib/url-state";
-import { redirect } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import generateRepoList from "@/lib/generateRepoList";
 import pageMeta from "@/lib/pagination";
 import { SmallUserCard } from "@/components/user/small-card";
@@ -16,9 +16,7 @@ export default async function Page(
     const parsedSearchParams = parseSearchParams(await props.searchParams);
 
     if (!parsedParams.isValid) {
-        return (
-            <h1>Something went wrong, path: {parsedParams.type}</h1>
-        );
+        notFound();
     }
 
     const { name: q, page } = parsedSearchParams;

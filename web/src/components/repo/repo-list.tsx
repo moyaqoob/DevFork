@@ -37,6 +37,9 @@ export const RepoList: React.FC<RepoListProps> = ({ title, username, repos, fork
                     </Link>
                 </div>
             )}
+            {repos.length === 0 && (
+                <p className="italic px-4">No {forked ? "forked" : "original"} repositories found</p>
+            )}
         </div>
     );
 };

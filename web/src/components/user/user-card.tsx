@@ -5,13 +5,15 @@ import { fetchUserData, fetchUserStarCount } from "@/lib/fetchUserDetails";
 import Image from "next/image";
 import { Suspense } from "react";
 import { ForkStatsCard } from "@/components/user/suspense-fork";
-import { StatsSkeleton } from "../ui/skeletons";
+import { StatsSkeleton } from "@/components/ui/skeletons";
+import { NoUser } from "@/components/user/no-user";
 
 export const UserCard = async ({ query }: { query: string }) => {
     const [user, userStars] = await Promise.all([
         fetchUserData(query),
         fetchUserStarCount(query),
     ]);
+    if (!user || !userStars) return <NoUser />;
     return (
         <BaseUserCard>
             <CardContent className="p-0 grid grid-rows-[20px_8rem_1fr]">

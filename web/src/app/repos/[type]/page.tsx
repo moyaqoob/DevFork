@@ -6,6 +6,7 @@ import pageMeta from "@/lib/pagination";
 import { SmallUserCard } from "@/components/user/small-card";
 import { RepoPagination } from "./repo-pagination";
 import { RepoList } from "@/components/repo/repo-list";
+import { NoUser } from "@/components/user/no-user";
 
 export default async function Page(
     props: {
@@ -33,6 +34,7 @@ export default async function Page(
         fetchUserStarCount(q),
         fetchUserRepos(q),
     ]);
+    if (!user || !userStars || !repos) return <NoUser />;
     const repoList = generateRepoList(parsedParams.type, repos);
 
     const { totalPages, currentPage, pageStart, pageEnd, isOutofbounds } = pageMeta(repoList.repos.length, page);

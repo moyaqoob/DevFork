@@ -31,12 +31,14 @@ export interface UserRepos {
 
 export interface UserDetails extends UserData, UserStars, UserRepos {}
 
-export const fetchUserData = async (username: string): Promise<UserData> => {
+export const fetchUserData = async (
+  username: string,
+): Promise<UserData | null> => {
   const userUrl = `${API_URL}/${username}`;
   const userResponse = await fetch(userUrl, {
     cache: "force-cache",
   });
-  if (!userResponse.ok) throw new Error("Failed to fetch user data");
+  if (!userResponse.ok) return null;
   const userData = await userResponse.json();
 
   return {
@@ -51,13 +53,14 @@ export const fetchUserData = async (username: string): Promise<UserData> => {
 
 export const fetchUserStarCount = async (
   username: string,
-): Promise<UserStars> => {
+): Promise<UserStars | null> => {
   const starsUrl = `${API_URL}/${username}/starred?page=1&per_page=1`;
   const starsResponse = await fetch(starsUrl, {
     cache: "force-cache",
   });
+  if (!starsResponse.ok) return null;
   const linkHeader = starsResponse.headers.get("link");
-  if (!linkHeader) throw new Error("No link header found");
+  if (!linkHeader) return { totalStars: 0 };
 
   const lastPageLink = linkHeader
     .split(",")
@@ -74,12 +77,12 @@ export const fetchUserStarCount = async (
   };
 };
 
-export const fetchUserRepos = async (username: string): Promise<UserRepos> => {
+export const fetchUserRepos = async (username: string): Promise<UserRepos | null> => {
   const reposUrl = `${API_URL}/${username}/repos`;
   const perPage = 100;
 
   const userData = await fetchUserData(username);
-  if (!userData) throw new Error("Failed to fetch user data");
+  if (!userData) return null;
   const totalRepoPages = Math.ceil(userData.publicRepos / perPage);
 
   const repoRequests = Array.from({ length: totalRepoPages }, async (_, i) => {

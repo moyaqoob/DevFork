@@ -10,19 +10,16 @@ export default async function Page({
     searchParams: Promise<{ name: string }>;
 }) {
     const q = (await searchParams).name;
+    if (!q) return;
 
     return (
         <>
-            {q && (
-                <Suspense key={q + "user"} fallback={<UserCardSkeleton />}>
-                    <UserCard query={q} />
-                </Suspense>
-            )}
-            {q && (
-                <Suspense key={q + "repo"} fallback={<RepoSkeleton />}>
-                    <Repo query={q} />
-                </Suspense>
-            )}
+            <Suspense key={q + "user"} fallback={<UserCardSkeleton />}>
+                <UserCard query={q} />
+            </Suspense>
+            <Suspense key={q + "repo"} fallback={<RepoSkeleton />}>
+                <Repo query={q} />
+            </Suspense>
         </>
     );
 }

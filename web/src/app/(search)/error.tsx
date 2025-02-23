@@ -12,7 +12,7 @@ export default function Error({
     return (
         <div className='grid w-fit mx-auto items-center justify-items-center justify-center content-start gap-2 mt-[15%] grid-cols-2'>
             <Icon icon="github" size={100} className="col-span-full" />
-            <p className='text-3xl col-span-full'>User does not exist</p>
+            <p className='text-3xl col-span-full'>Some issue with Github API</p>
             <Button
                 className="justify-self-end"
                 onClick={

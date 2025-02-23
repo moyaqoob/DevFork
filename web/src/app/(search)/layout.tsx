@@ -1,19 +1,12 @@
 import Form from 'next/form';
 import Icon from "@/components/icon";
 import { ThemeChange } from "@/components/ui/theme-change";
-import { Repo } from "@/components/repo";
-import { Suspense } from "react";
-import { RepoSkeleton, UserCardSkeleton } from "@/components/ui/skeletons";
-import { UserCard } from '@/components/user/user-card';
 
-
-export default async function Page({
-    searchParams
-}: {
-    searchParams: Promise<{ name: string }>;
-}) {
-    const q = (await searchParams).name;
-
+export default function Layout({
+    children,
+}: Readonly<{
+    children: React.ReactNode;
+}>) {
     return (
         <>
             <Form action="/" className="grid grid-cols-1 grid-flow-col gap-2 items-center">
@@ -23,16 +16,7 @@ export default async function Page({
                 </div>
                 <ThemeChange />
             </Form>
-            {q && (
-                <Suspense key={q + "user"} fallback={<UserCardSkeleton />}>
-                    <UserCard query={q} />
-                </Suspense>
-            )}
-            {q && (
-                <Suspense key={q + "repo"} fallback={<RepoSkeleton />}>
-                    <Repo query={q} />
-                </Suspense>
-            )}
+            {children}
         </>
     );
 }

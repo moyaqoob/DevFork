@@ -10,9 +10,9 @@ export default function Error({
 }) {
 
     return (
-        <div className='grid w-fit mx-auto items-center justify-items-center justify-center content-start gap-2 mt-[15%] grid-cols-2'>
-            <Icon icon="github" size={100} className="col-span-full" />
-            <p className='text-3xl col-span-full'>Some issue with Github API</p>
+        <div className='grid w-fit mx-auto items-center justify-items-center justify-center content-start gap-y-2 gap-x-4 mt-[35%] md:mt-[15%] grid-cols-2'>
+            <Icon icon="github" className="col-span-full w-16 h-16  md:w-24 md:h-24" />
+            <p className='text-xl md:text-3xl col-span-full'>Some issue with Github API</p>
             <Button
                 className="justify-self-end"
                 onClick={
@@ -21,7 +21,7 @@ export default function Error({
             >
                 Try again
             </Button>
-            <Link href="/" className="underline underline-offset-2 text-blue-400 font-medium">Go back home</Link>
+            <Link href="/" className="justify-self-start underline underline-offset-2 text-accent font-medium">Go back home</Link>
         </div>
     )
 }

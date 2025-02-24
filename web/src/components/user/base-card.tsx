@@ -3,7 +3,7 @@ import { HTMLAttributes } from "react";
 
 export const BaseUserCard = ({ children }: HTMLAttributes<HTMLDivElement>) => {
     return (
-        <Card className="bg-transparent border-none my-6">
+        <Card className="bg-transparent border-none my-6 shadow-none">
             {children}
         </Card>
     );

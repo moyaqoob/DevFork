@@ -16,7 +16,7 @@ export const UserCard = async ({ query }: { query: string }) => {
     if (!user || !userStars) return <NoUser />;
     return (
         <BaseUserCard>
-            <CardContent className="p-0 grid grid-rows-[20px_8rem_1fr]">
+            <CardContent className="p-0 grid grid-rows-[20px_5rem_1fr] md:grid-rows-[20px_8rem_1fr]">
                 <Image
                     width={564}
                     height={564}
@@ -24,15 +24,15 @@ export const UserCard = async ({ query }: { query: string }) => {
                     alt="Profile"
                     priority
                     loading="eager"
-                    className="w-32 h-32 mx-6 rounded-lg z-10 shadow-sm border border-primary row-start-1 row-end-3 col-start-1"
+                    className="w-20 h-20 md:w-32 md:h-32 mx-6 rounded-lg z-10 shadow-sm border border-primary row-start-1 row-end-3 col-start-1"
                 />
-                <div className="p-6 border border-muted-foreground/30 rounded-xl grid gap-6 items-start row-start-2 row-end-4 col-start-1 grid-rows-subgrid">
+                <div className="p-3 md:p-6 border border-muted-foreground/30 rounded-xl grid gap-6 items-start row-start-2 row-end-4 col-start-1 grid-rows-subgrid">
                     <div />
-                    <div className="grid grid-cols-2 sm:grid-cols-[1fr_2fr] gap-4">
-                        <h2 className="text-2xl font-bold col-span-full">{user.name}</h2>
-                        <p className="text-gray-600 col-span-full text-balance">{
+                    <div className="grid grid-cols-2 sm:grid-cols-[1fr_2fr] gap-2 md:gap-4">
+                        <h2 className="text-lg md:text-2xl font-bold col-span-full">{user.name}</h2>
+                        <p className="text-sm md:text-base text-muted-foreground col-span-full text-balance">{
                             user.bio ??
-                            <span className="italic text-gray-400">~No bio... YOU must think very highly of yourself~</span>
+                            <span className="italic text-muted-foreground">~No bio... YOU must think very highly of yourself~</span>
                         }</p>
                         <StatsCard icon={"book"} label="Repositories" value={user.publicRepos} />
                         <StatsCard icon={"users"} label="Followers" value={user.followers} />

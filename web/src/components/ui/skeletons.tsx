@@ -38,16 +38,16 @@ const RepoCardSkeleton = () => {
     return (
         <div className={cn(
             shimmer,
-            "relative overflow-hidden rounded-xl p-5 border *:rounded-md *:bg-secondary/50",
+            "relative overflow-hidden rounded-xl p-2.5 md:p-5 border *:rounded-md *:bg-secondary/50",
         )}>
-            <div className="h-7 w-40" />
-            <div className="h-6 w-56 mt-2" />
-            <div className="h-5 w-full mt-4" />
+            <div className="h-5 w-1/2 md:h-8 md:w-40" />
+            <div className="h-4 md:h-6 w-3/4 md:w-56 mt-2" />
+            <div className="h-3 md:h-5 w-full mt-4" />
         </div>
     )
 }
 
-const RepoListSkeleton = ({length = NO_OF_REPOS}: { length?: number }) => {
+export const RepoListSkeleton = ({length = NO_OF_REPOS}: { length?: number }) => {
     return (
         <div className="space-y-3 md:space-y-6">
             <div className="h-6 md:h-[30px] w-2/4 md:w-60 rounded-md bg-secondary/50" />

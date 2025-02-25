@@ -18,7 +18,7 @@ export const StatsCard = (
         "grid gap-x-1.5 md:gap-x-3 rounded-lg grid-cols-[auto_1fr] items-center",
         small && "grid-x-1 grid-flow-dense"
     )}>
-s       {icon &&
+        {icon &&
             <div className="p-2 bg-blue-50 dark:bg-blue-700/20 text-blue-600 rounded-lg row-start-1 row-end-3">
                 <Icon icon={icon} className="md:w-8 md:h-8" />
             </div>

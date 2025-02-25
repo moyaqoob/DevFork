@@ -8,7 +8,7 @@ export const StatsSkeleton = ({ animate = false }: { animate?: boolean }) => {
     return <div className={cn(
         { shimmer: animate },
         { "relative overflow-hidden": animate },
-        "h-[46px] w-60 rounded-md bg-secondary/50"
+        "h-8 md:h-[46px] w-full md:w-60 rounded-md bg-secondary/50"
     )} />
 };
 
@@ -16,15 +16,15 @@ export function UserCardSkeleton() {
     return (
         <div className={cn(
             shimmer,
-            "relative overflow-hidden rounded-xl shadow my-6 grid grid-rows-[20px_8rem_1fr]",
+           "relative overflow-hidden rounded-xl my-6 grid grid-rows-[20px_5rem_1fr] md:grid-rows-[20px_8rem_1fr]",
 
         )} >
-            <div className="w-32 h-32 mx-6 rounded-lg z-[1] bg-secondary/50 row-start-1 row-end-3 col-start-1" />
-            <div className="border border-secondary/50 p-6 rounded-xl grid gap-6 items-start row-start-2 row-end-4 col-start-1 grid-rows-subgrid">
+            <div className="w-20 h-20 md:w-32 md:h-32 mx-6 rounded-lg z-[1] bg-secondary/50 row-start-1 row-end-3 col-start-1" />
+            <div className="border border-secondary/50 p-3 md:p-6 rounded-xl grid gap-6 items-start row-start-2 row-end-4 col-start-1 grid-rows-subgrid">
                 <div />
-                <div className="grid grid-cols-2 sm:grid-cols-[1fr_2fr] gap-4">
-                    <div className="h-8 w-20 rounded-md bg-secondary/50 col-span-full" />
-                    <div className="h-6 w-80 rounded-md bg-secondary/50 col-span-full" />
+                <div className="grid grid-cols-2 sm:grid-cols-[1fr_2fr] gap-2 md:gap-4">
+                    <div className="h-7 md:h-8 w-1/2 md:w-20 rounded-md bg-secondary/50 col-span-full" />
+                    <div className="h-5 md:h-6 w-3/4 md:w-80 rounded-md bg-secondary/50 col-span-full" />
                     {Array(4).fill("").map((_, i) => (
                         <StatsSkeleton key={i} />
                     ))}

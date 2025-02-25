@@ -34,7 +34,7 @@ export default function RootLayout({
           attribute="class"
           defaultTheme="dark"
         >
-          <main className="relative min-h-svh max-w-screen-xl mx-auto p-6">
+          <main className="relative min-h-svh max-w-screen-xl mx-auto p-3 md:p-6">
             {children}
           </main>
         </ThemeProvider>

@@ -18,9 +18,9 @@ export const RepoList: React.FC<RepoListProps> = ({ title, username, repos, fork
     noOfRepos = noOfRepos ?? repos.length;
     const link = `/repos/${forked ? 'forked' : 'original'}?name=${username}`;
     return (
-        <div className="space-y-6">
-            <h3 className="text-xl font-semibold flex items-center gap-2 px-2">
-                <Icon icon={forked ? "gitFork" : "book"} size={30} />
+        <div className="space-y-3 md:space-y-6">
+            <h3 className="md:text-xl font-semibold flex items-center gap-2 px-2">
+                <Icon icon={forked ? "gitFork" : "book"} className="w-5 h-5 md:w-7 md:h-7" />
                 {title}
             </h3>
             {repos.slice(0, noOfRepos).map((repo, i) => (

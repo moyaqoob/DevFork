@@ -49,8 +49,8 @@ const RepoCardSkeleton = () => {
 
 const RepoListSkeleton = ({length = NO_OF_REPOS}: { length?: number }) => {
     return (
-        <div className="space-y-6">
-            <div className="h-[30px] w-60 rounded-md bg-secondary/50" />
+        <div className="space-y-3 md:space-y-6">
+            <div className="h-6 md:h-[30px] w-2/4 md:w-60 rounded-md bg-secondary/50" />
             {Array.from({ length }).map((_, i) => (
                 <RepoCardSkeleton key={i} />
             ))}

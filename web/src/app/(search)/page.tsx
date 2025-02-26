@@ -3,6 +3,17 @@ import { Suspense } from "react";
 import { RepoSkeleton, UserCardSkeleton } from "@/components/ui/skeletons";
 import { UserCard } from '@/components/user/user-card';
 
+type Props = {
+    searchParams: Promise<{ name: string }>;
+};
+
+export async function generateMetadata({ searchParams }: Props) {
+    const q = (await searchParams).name;
+    return {
+        title: q,
+        description: `Search for ${q}`,
+    };
+}
 
 export default async function Page({
     searchParams

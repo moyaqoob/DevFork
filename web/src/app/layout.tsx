@@ -15,8 +15,19 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Git Fork",
+  title:{
+    template: "%s - Git Fork",
+    default: "Git Fork",
+  },
   description: "Seperate your forks from your main repository",
+  keywords: ["git", "fork", "github", "Repositories", "stars"],
+  authors: [{name: "ofcljaved", url: "https://ofcljaved.com"}],
+  openGraph: {
+    title: "Git Fork",
+    description: "Seperate your forks from your main repository",
+    type: "website",
+    siteName: "Git Fork",
+  }
 };
 
 export default function RootLayout({
@@ -34,7 +45,7 @@ export default function RootLayout({
           attribute="class"
           defaultTheme="dark"
         >
-          <main className="relative min-h-svh max-w-screen-xl mx-auto p-6">
+          <main className="relative min-h-svh max-w-screen-xl mx-auto p-3 md:p-6">
             {children}
           </main>
         </ThemeProvider>

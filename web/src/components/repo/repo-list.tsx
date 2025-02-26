@@ -3,7 +3,6 @@ import Icon from "@/components/icon";
 import { RepoCard } from "@/components/repo/repo-card";
 import Link from "next/link";
 import { LINES } from "@/constant/stalker-humor";
-import { RepoListSkeleton } from "@/components/ui/skeletons";
 
 const randomOneLiner = () => LINES[Math.floor(Math.random() * LINES.length)];
 

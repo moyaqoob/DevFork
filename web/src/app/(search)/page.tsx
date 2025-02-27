@@ -3,18 +3,20 @@ import { Suspense } from "react";
 import { RepoSkeleton, UserCardSkeleton } from "@/components/ui/skeletons";
 import { UserCard } from '@/components/user/user-card';
 import { fetchUserData } from "@/lib/fetchUserDetails";
+import { Metadata, ResolvingMetadata,  } from "next";
 
 type Props = {
     searchParams: Promise<{ name: string }>;
 };
 
-export async function generateMetadata({ searchParams }: Props) {
+export async function generateMetadata({ searchParams }: Props, parent: ResolvingMetadata): Promise<Metadata> {
     const q = (await searchParams).name;
     if (!q) return {}
     const user = await fetchUserData(q);
     if (!user) return {};
 
     const description = `Check out ${q}'s profile on Git Fork`;
+    const ogImage = (await parent).openGraph?.images || [];
     return {
         title: q,
         description,
@@ -23,6 +25,7 @@ export async function generateMetadata({ searchParams }: Props) {
             description,
             type: "website",
             siteName: "Git Fork",
+            images: ogImage,
         }
     };
 }

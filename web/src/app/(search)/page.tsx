@@ -18,6 +18,12 @@ export async function generateMetadata({ searchParams }: Props) {
     return {
         title: q,
         description,
+        openGraph: {
+            title: `${q}| View Github Repositories`,
+            description,
+            type: "website",
+            siteName: "Git Fork",
+        }
     };
 }
 

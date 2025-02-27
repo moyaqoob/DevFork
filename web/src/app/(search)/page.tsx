@@ -9,9 +9,9 @@ type Props = {
 
 export async function generateMetadata({ searchParams }: Props) {
     const q = (await searchParams).name;
+    if (!q) return {}
     return {
-        title: q,
-        description: `Search for ${q}`,
+        title: q
     };
 }
 

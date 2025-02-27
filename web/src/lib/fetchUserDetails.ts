@@ -37,6 +37,9 @@ export const fetchUserData = async (
   const userUrl = `${API_URL}/${username}`;
   const userResponse = await fetch(userUrl, {
     cache: "force-cache",
+    next: {
+      revalidate: 60 * 5,
+    },
   });
   if (!userResponse.ok) return null;
   const userData = await userResponse.json();
@@ -57,6 +60,9 @@ export const fetchUserStarCount = async (
   const starsUrl = `${API_URL}/${username}/starred?page=1&per_page=1`;
   const starsResponse = await fetch(starsUrl, {
     cache: "force-cache",
+    next: {
+      revalidate: 60 * 5,
+    },
   });
   if (!starsResponse.ok) return null;
   const linkHeader = starsResponse.headers.get("link");
@@ -77,7 +83,9 @@ export const fetchUserStarCount = async (
   };
 };
 
-export const fetchUserRepos = async (username: string): Promise<UserRepos | null> => {
+export const fetchUserRepos = async (
+  username: string,
+): Promise<UserRepos | null> => {
   const reposUrl = `${API_URL}/${username}/repos`;
   const perPage = 100;
 
@@ -90,6 +98,9 @@ export const fetchUserRepos = async (username: string): Promise<UserRepos | null
       `${reposUrl}?page=${i + 1}&per_page=${perPage}&sort=updated`,
       {
         cache: "force-cache",
+        next: {
+          revalidate: 60 * 5,
+        },
       },
     );
     return await res.json();

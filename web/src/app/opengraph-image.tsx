@@ -27,7 +27,8 @@ export default async function Image() {
             >
                 <div style={{display: 'flex', flexDirection: 'column'}}>
                     <div style={{ fontSize: 48 }}>Git Fork</div>
-                    <div>GitHub Data,<br/>Simplified</div>
+                    <div>GitHub Data,</div>
+                    <div>Simplified</div>
                 </div>
                 <Icon icon='gitFork' style={{ width: 500, height: 500, alignSelf: 'center' }} />
             </div >

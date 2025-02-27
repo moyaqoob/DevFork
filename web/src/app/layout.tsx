@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   keywords: ["git", "fork", "github", "Repositories", "stars"],
   authors: [{name: "ofcljaved", url: "https://ofcljaved.com"}],
   openGraph: {
-    title: "Git Fork",
+    title: "Git Fork | View Github Repositories",
     description: "Seperate your forks from your main repository",
     type: "website",
     siteName: "Git Fork",

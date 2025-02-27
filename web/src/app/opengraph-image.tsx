@@ -21,12 +21,14 @@ export default async function Image() {
                     background: 'white',
                     width: 1200,
                     height: 630,
-                    display: 'grid',
+                    display: 'flex',
                     padding: 28
                 }}
             >
-                <h1 style={{ alignSelf: 'end', fontSize: 48 }}>Git Fork</h1>
-                <p>GitHub Data, Simplified</p>
+                <div style={{display: 'flex', flexDirection: 'column'}}>
+                    <h1 style={{ fontSize: 48 }}>Git Fork</h1>
+                    <p>GitHub Data, Simplified</p>
+                </div>
                 <Icon icon='gitFork' style={{ width: 600, height: 600, gridRow: '1 / 3', gridColumn: 2, alignSelf: 'center' }} />
             </div >
         ),

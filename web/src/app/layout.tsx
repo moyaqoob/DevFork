@@ -21,7 +21,6 @@ export const metadata: Metadata = {
   },
   description: "Seperate your forks from your main repository",
   keywords: ["dev", "fork", "github", "Repositories", "stars"],
-  authors: [{name: "ofcljaved", url: "https://ofcljaved.com"}],
   openGraph: {
     title: "Dev Fork | view and stalk your fav github repos",
     description: "Seperate your forks from your main repository",

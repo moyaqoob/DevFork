@@ -14,7 +14,7 @@ export const RepoCard = ({ repo }: { repo: Repo }) => {
                             {repo.name}
                         </h4>
                         <p className="w-[35ch] md:w-full truncate text-sm md:text-base">{
-                            repo.description ?? <span className="italic text-xs md:text-sm">~Description? Nah, who needs context anyway~</span>
+                            repo.description ?? <span className="italic text-xs md:text-sm">~Description? who needs it~</span>
                         }</p>
                     </div>
                     <div className="*:flex *:items-center *:gap-1 mt-4 flex flex-wrap gap-3 md:gap-4 text-xs md:text-sm">

@@ -20,13 +20,13 @@ export const metadata: Metadata = {
     default: "Git Fork",
   },
   description: "Seperate your forks from your main repository",
-  keywords: ["git", "fork", "github", "Repositories", "stars"],
+  keywords: ["dev", "fork", "github", "Repositories", "stars"],
   authors: [{name: "ofcljaved", url: "https://ofcljaved.com"}],
   openGraph: {
-    title: "Git Fork | View Github Repositories",
+    title: "Dev Fork | view and stalk your fav github repos",
     description: "Seperate your forks from your main repository",
     type: "website",
-    siteName: "Git Fork",
+    siteName: "Dev Fork",
   }
 };
 
